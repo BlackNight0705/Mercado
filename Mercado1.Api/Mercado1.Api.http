@@ -1,0 +1,6 @@
+@Mercado1.Api_HostAddress = http://localhost:5080
+
+GET {{Mercado1.Api_HostAddress}}/api/productos
+Accept: application/json
+
+###
