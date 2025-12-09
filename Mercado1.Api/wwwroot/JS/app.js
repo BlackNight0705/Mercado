@@ -19,7 +19,7 @@ cargarSeccion("hero", "hero.html");
 cargarSeccion("cuerpo", "cuerpo.html");
 cargarSeccion("footer", "footer.html");
 
-fetch('http://localhost:5000/api/productos')
+fetch('http://localhost:5080/api/productos')
     .then(res => res.json())
     .then(data => {
         const lista = document.getElementById('lista-productos');

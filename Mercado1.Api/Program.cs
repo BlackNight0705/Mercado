@@ -14,6 +14,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("PermitirTodo", policy =>
         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
+builder.Services.AddControllers()
+.AddJsonOptions(options =>
+ {
+     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+ });
+
 
 var app = builder.Build();
 
