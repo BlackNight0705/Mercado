@@ -1,0 +1,268 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    background-color: #eaeded;
+}
+
+/* Mini Header */
+.mini-header {
+    background-color: #131921;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9900;
+    cursor: pointer;
+}
+
+    .logo img {
+        width: 100px;
+        height: auto;
+    }
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .back-link:hover {
+        color: #ff9900;
+    }
+
+/* Container Principal */
+.orders-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0F1111;
+}
+
+/* Lista de pedidos */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #ddd;
+}
+
+/* Header del pedido */
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.order-info {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0F1111;
+}
+
+.order-number {
+    color: #0066c0;
+}
+
+/* Estado del pedido */
+.order-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-processing {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-delivered {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Items del pedido */
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 15px;
+    align-items: center;
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.item-details h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #0066c0;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+    .item-details h3:hover {
+        color: #c45500;
+        text-decoration: underline;
+    }
+
+.item-quantity {
+    font-size: 13px;
+    color: #666;
+}
+
+.item-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #B12704;
+    text-align: right;
+}
+
+/* Total del pedido */
+.order-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: right;
+}
+
+.total-label {
+    font-size: 14px;
+    color: #666;
+    margin-right: 10px;
+}
+
+.total-amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0F1111;
+}
+
+/* Empty state */
+.empty-orders {
+    background: white;
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+    .empty-orders h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .empty-orders p {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+.shop-button {
+    background-color: #ff9900;
+    color: #0F1111;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .shop-button:hover {
+        background-color: #f3a847;
+    }
+
+@media (max-width: 768px) {
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .order-info {
+        width: 100%;
+    }
+
+    .order-status {
+        width: 100%;
+        text-align: center;
+    }
+
+    .order-item {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .item-price {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 5px;
+    }
+}

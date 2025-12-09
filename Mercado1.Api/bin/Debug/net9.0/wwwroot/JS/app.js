@@ -30,3 +30,7 @@ fetch('http://localhost:5000/api/productos')
         });
     })
     .catch(err => console.error('Error al cargar productos:', err));
+
+document.getElementById("login-link").addEventListener("click", function () {
+    window.location.href = "login.html";
+});

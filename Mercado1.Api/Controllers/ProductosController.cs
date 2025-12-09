@@ -1,17 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Mercado1.Api.Data;
+using Mercado1.Api.Models;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ProductosController : ControllerBase
+namespace Mercado1.Api.Controllers
 {
-    [HttpGet]
-    public IActionResult Get()
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ProductosController : ControllerBase
     {
-        var productos = new[] {
-            new { Id = 1, Nombre = "Manzana", Precio = 0.5 },
-            new { Id = 2, Nombre = "Pan", Precio = 1.0 },
-            new { Id = 3, Nombre = "Leche", Precio = 1.5 }
-        };
-        return Ok(productos);
+        private readonly AppDbContext _db;
+        public ProductosController(AppDbContext db) => _db = db;
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var productos = await _db.Productos.Include(p => p.Categoria).ToListAsync();
+            return Ok(productos);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var producto = await _db.Productos
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(p => p.Id_P == id);
+
+            return producto is null ? NotFound() : Ok(producto);
+        }
     }
 }

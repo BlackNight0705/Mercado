@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj": {}
+    "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj": {
+    "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
+        "projectUniqueName": "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
         "projectName": "Mercado1.Api",
-        "projectPath": "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
+        "projectPath": "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
         "packagesPath": "C:\\Users\\abdel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\obj\\",
+        "outputPath": "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,6 +54,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
