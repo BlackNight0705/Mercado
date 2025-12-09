@@ -1,11 +1,157 @@
-﻿<!-- CUERPO/CONTENIDO PRINCIPAL -->
+﻿  <!-- CUERPO/CONTENIDO PRINCIPAL -->
 <main class="main-content">
     <div class="content-container">
-        <div class="content-placeholder">
-            <h2>📦 Área de Contenido Principal</h2>
-            <p>Este es el contenedor donde insertarás tu desarrollo modular.</p>
-            <p>Puedes agregar productos, categorías, grids, listas, o cualquier componente personalizado.</p>
-            <p><strong>Modifica el contenido dentro de <code>.content-container</code></strong></p>
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: #0F1111;">Productos Destacados</h2>
+
+        <!-- Grid de Productos - Aquí tu JS llenará los productos desde la API -->
+        <div class="products-grid" id="productsGrid">
+
+            <!-- Ejemplo de Tarjeta de Producto 1 -->
+            <div class="product-card">
+                <span class="product-badge">-20%</span>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23f0f0f0' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' font-size='20' text-anchor='middle' dy='.3em'%3EProducto 1%3C/text%3E%3C/svg%3E" alt="Producto 1">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Auriculares Inalámbricos Premium con Cancelación de Ruido</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews-count">(234)</span>
+                    </div>
+                    <div>
+                        <span class="product-price">
+                            <span class="product-price-currency">$</span>79.99
+                        </span>
+                        <span class="product-old-price">$99.99</span>
+                    </div>
+                </div>
+
+                <!-- Overlay de Descripción -->
+                <div class="product-description-overlay">
+                    <h4 class="description-title">Descripción del Producto</h4>
+                    <p class="description-text">
+                        Experimenta sonido de alta calidad con cancelación activa de ruido.
+                        Diseño ergonómico y batería de larga duración para tus jornadas más largas.
+                    </p>
+                    <ul class="description-features">
+                        <li>Cancelación activa de ruido</li>
+                        <li>Hasta 30 horas de batería</li>
+                        <li>Bluetooth 5.0</li>
+                        <li>Micrófono integrado</li>
+                        <li>Estuche de carga incluido</li>
+                    </ul>
+                    <button class="add-to-cart-btn">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <!-- Ejemplo de Tarjeta de Producto 2 -->
+            <div class="product-card">
+                <span class="product-badge">OFERTA</span>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23f0f0f0' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' font-size='20' text-anchor='middle' dy='.3em'%3EProducto 2%3C/text%3E%3C/svg%3E" alt="Producto 2">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Smartwatch Deportivo con Monitor de Frecuencia Cardíaca</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews-count">(567)</span>
+                    </div>
+                    <div>
+                        <span class="product-price">
+                            <span class="product-price-currency">$</span>129.99
+                        </span>
+                    </div>
+                </div>
+
+                <div class="product-description-overlay">
+                    <h4 class="description-title">Descripción del Producto</h4>
+                    <p class="description-text">
+                        Smartwatch completo con seguimiento de actividad física, monitor de sueño
+                        y notificaciones inteligentes. Resistente al agua y compatible con iOS/Android.
+                    </p>
+                    <ul class="description-features">
+                        <li>Monitor de frecuencia cardíaca 24/7</li>
+                        <li>Seguimiento de 20+ deportes</li>
+                        <li>Resistente al agua 5ATM</li>
+                        <li>Batería de 7 días</li>
+                        <li>Pantalla AMOLED</li>
+                    </ul>
+                    <button class="add-to-cart-btn">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <!-- Ejemplo de Tarjeta de Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23f0f0f0' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' font-size='20' text-anchor='middle' dy='.3em'%3EProducto 3%3C/text%3E%3C/svg%3E" alt="Producto 3">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Teclado Mecánico RGB Gaming con Switches Azules</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="reviews-count">(189)</span>
+                    </div>
+                    <div>
+                        <span class="product-price">
+                            <span class="product-price-currency">$</span>89.99
+                        </span>
+                    </div>
+                </div>
+
+                <div class="product-description-overlay">
+                    <h4 class="description-title">Descripción del Producto</h4>
+                    <p class="description-text">
+                        Teclado mecánico profesional con retroiluminación RGB personalizable.
+                        Switches mecánicos de alta precisión para gaming y productividad.
+                    </p>
+                    <ul class="description-features">
+                        <li>Switches mecánicos azules</li>
+                        <li>Retroiluminación RGB personalizable</li>
+                        <li>Teclas anti-ghosting</li>
+                        <li>Cable trenzado extraíble</li>
+                        <li>Reposamuñecas magnético</li>
+                    </ul>
+                    <button class="add-to-cart-btn">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <!-- Ejemplo de Tarjeta de Producto 4 -->
+            <div class="product-card">
+                <span class="product-badge">NUEVO</span>
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23f0f0f0' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' font-size='20' text-anchor='middle' dy='.3em'%3EProducto 4%3C/text%3E%3C/svg%3E" alt="Producto 4">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Cámara Web HD 1080p con Micrófono Dual Integrado</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews-count">(423)</span>
+                    </div>
+                    <div>
+                        <span class="product-price">
+                            <span class="product-price-currency">$</span>59.99
+                        </span>
+                    </div>
+                </div>
+
+                <div class="product-description-overlay">
+                    <h4 class="description-title">Descripción del Producto</h4>
+                    <p class="description-text">
+                        Cámara web profesional con resolución Full HD y micrófonos estéreo.
+                        Perfecta para videollamadas, streaming y creación de contenido.
+                    </p>
+                    <ul class="description-features">
+                        <li>Resolución 1080p a 30fps</li>
+                        <li>Micrófonos estéreo con reducción de ruido</li>
+                        <li>Enfoque automático</li>
+                        <li>Corrección de luz automática</li>
+                        <li>Compatible con todas las plataformas</li>
+                    </ul>
+                    <button class="add-to-cart-btn">Agregar al carrito</button>
+                </div>
+            </div>
+
         </div>
     </div>
+    <script src="grid.js"></script>
 </main>
