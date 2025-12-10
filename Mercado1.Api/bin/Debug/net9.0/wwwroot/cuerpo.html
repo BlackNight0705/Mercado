@@ -1,11 +1,13 @@
 ﻿<!-- CUERPO/CONTENIDO PRINCIPAL -->
 <main class="main-content">
+
     <div class="content-container">
-        <div class="content-placeholder">
-            <h2>📦 Área de Contenido Principal</h2>
-            <p>Este es el contenedor donde insertarás tu desarrollo modular.</p>
-            <p>Puedes agregar productos, categorías, grids, listas, o cualquier componente personalizado.</p>
-            <p><strong>Modifica el contenido dentro de <code>.content-container</code></strong></p>
-        </div>
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: #0F1111;">Productos Destacados</h2>
+         
+        <!-- Grid de Productos - Aquí tu JS llenará los productos desde la API -->
+        <div class="products-grid" id="productsGrid"></div>
     </div>
+
+    <!-- Carga el script con defer -->
+    <script src="JS/grid.js" defer></script>
 </main>

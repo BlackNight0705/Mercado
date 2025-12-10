@@ -1,5 +1,4 @@
-﻿
-// Función para cargar fragmentos HTML
+﻿// Función para cargar fragmentos HTML
 async function cargarSeccion(id, archivo) {
     const contenedor = document.getElementById(id);
     try {
@@ -16,17 +15,57 @@ async function cargarSeccion(id, archivo) {
 // Llamadas a cada sección
 cargarSeccion("header", "header.html");
 cargarSeccion("hero", "hero.html");
-cargarSeccion("cuerpo", "cuerpo.html");
+
+// Esperar a que cuerpo.html esté cargado antes de pintar productos
+cargarSeccion("cuerpo", "cuerpo.html").then(() => {
+    fetch('http://localhost:5000/api/productos')
+        .then(res => {
+            if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            const productos = data.$values || data;
+            if (!Array.isArray(productos)) throw new Error("La respuesta no es un array de productos.");
+
+            const grid = document.getElementById('productsGrid');
+            if (!grid) {
+                console.error("Elemento 'productsGrid' no encontrado.");
+                return;
+            }
+
+            productos.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${p.imagen}" alt="${p.nombre}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${p.nombre}</h3>
+                        <p class="product-price">$${p.precio}</p>
+                        <p class="product-description">${p.descripcion}</p>
+                        <span class="product-badge ${p.badge === 'Disponible' ? 'available' : 'out-of-stock'}">
+                            ${p.badge}
+                        </span>
+                         <button class="add-to-cart" data-id="${p.id}">Añadir al carrito</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        })
+        .catch(err => console.error('Error al cargar productos:', err));
+});
+
+// Cargar el footer
 cargarSeccion("footer", "footer.html");
 
-fetch('http://localhost:5000/api/productos')
-    .then(res => res.json())
-    .then(data => {
-        const lista = document.getElementById('lista-productos');
-        data.forEach(p => {
-            const item = document.createElement('li');
-            item.textContent = `${p.nombre} - $${p.precio}`;
-            lista.appendChild(item);
+// Esperar al DOM para manejar eventos como el login
+window.addEventListener("DOMContentLoaded", () => {
+    // Enlace de login
+    const loginLink = document.getElementById("login-link");
+    if (loginLink) {
+        loginLink.addEventListener("click", function () {
+            window.location.href = "login.html";
         });
-    })
-    .catch(err => console.error('Error al cargar productos:', err));
+    } else {
+        console.warn("Elemento 'login-link' no encontrado.");
+    }
+});

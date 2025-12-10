@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Tu E-commerce</title>
+    <link rel="stylesheet" href="css/login-diseno.css">
+
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo El Mercado">
+        </div>
+
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <button class="tab-button active" onclick="switchTab('login')">Iniciar Sesión</button>
+                <button class="tab-button" onclick="switchTab('register')">Registrarse</button>
+            </div>
+
+            <div class="form-container">
+                <div class="success-message" id="successMessage"></div>
+
+                <!-- FORMULARIO DE LOGIN -->
+                <div class="tab-content active" id="loginTab">
+                    <h2 class="form-title">¡Bienvenido de nuevo!</h2>
+
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="loginEmail">Correo Electrónico</label>
+                            <input type="email" id="loginEmail" class="form-input" placeholder="tu@email.com" required>
+                            <span class="error-message" id="loginEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="loginPassword">Contraseña</label>
+                            <div class="password-toggle">
+                                <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')">👁️</button>
+                            </div>
+                            <span class="error-message" id="loginPasswordError"></span>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Recordarme</label>
+                        </div>
+
+                        <button type="submit" class="submit-button" id="loginButton">Iniciar Sesión</button>
+
+                        <div class="forgot-password">
+                            <a href="#" onclick="alert('Implementar recuperación de contraseña')">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+
+                    <div class="divider">o continuar con</div>
+
+                    <div class="social-buttons">
+                        <button class="social-button" onclick="loginWithGoogle()">
+                            <span>🔵</span> Google
+                        </button>
+                        <button class="social-button" onclick="loginWithFacebook()">
+                            <span>📘</span> Facebook
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO DE REGISTRO -->
+                <div class="tab-content" id="registerTab">
+                    <h2 class="form-title">Crear una cuenta</h2>
+
+                    <form id="registerForm" onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="registerName">Nombre Completo</label>
+                            <input type="text" id="registerName" class="form-input" placeholder="Juan Pérez" required>
+                            <span class="error-message" id="registerNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="registerEmail">Correo Electrónico</label>
+                            <input type="email" id="registerEmail" class="form-input" placeholder="tu@email.com" required>
+                            <span class="error-message" id="registerEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="registerPhone">Teléfono (Opcional)</label>
+                            <input type="tel" id="registerPhone" class="form-input" placeholder="+507 1234-5678">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="registerPassword">Contraseña</label>
+                            <div class="password-toggle">
+                                <input type="password" id="registerPassword" class="form-input" placeholder="••••••••" required minlength="6">
+                                <button type="button" class="toggle-password" onclick="togglePassword('registerPassword')">👁️</button>
+                            </div>
+                            <span class="error-message" id="registerPasswordError">Mínimo 6 caracteres</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="registerConfirmPassword">Confirmar Contraseña</label>
+                            <div class="password-toggle">
+                                <input type="password" id="registerConfirmPassword" class="form-input" placeholder="••••••••" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('registerConfirmPassword')">👁️</button>
+                            </div>
+                            <span class="error-message" id="registerConfirmError"></span>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="acceptTerms" required>
+                            <label for="acceptTerms">Acepto los términos y condiciones</label>
+                        </div>
+
+                        <button type="submit" class="submit-button" id="registerButton">Crear Cuenta</button>
+                    </form>
+
+                    <div class="terms">
+                        Al registrarte, aceptas nuestros <a href="#">Términos de Servicio</a> y <a href="#">Política de Privacidad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/login.js"></script>
+
+</body>
+</html>

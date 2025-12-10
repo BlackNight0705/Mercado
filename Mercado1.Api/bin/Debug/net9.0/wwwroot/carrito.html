@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link href="css/carrito-diseno.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Mini Header -->
+    <div class="mini-header">
+        <div class="logo"><img src="img/logo.png" alt="Logo El Mercado">
+    </div>
+        <a href="index.html" class="back-link">← Seguir comprando</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="cart-container">
+        <!-- Sección de Productos -->
+        <div class="cart-items-section">
+            <div class="cart-header">
+                <h1 class="cart-title">Carrito de Compras</h1>
+                <p class="cart-count" id="itemCount">0 artículos</p>
+            </div>
+
+            <!-- Lista de productos - Se llenará con JavaScript -->
+            <div id="cartItemsList">
+                <!-- Carrito vacío por defecto -->
+                <div class="empty-cart" id="emptyCart">
+                    <h3>🛒 Tu carrito está vacío</h3>
+                    <p>¡Agrega productos para comenzar tu compra!</p>
+                    <a href="index.html" class="shop-button">Explorar productos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumen del Carrito -->
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <h2 style="font-size: 20px; margin-bottom: 20px;">Resumen del pedido</h2>
+
+            <div class="summary-row">
+                <span class="summary-label">Subtotal (<span id="summaryItemCount">0</span> artículos)</span>
+                <span class="summary-value" id="subtotal">$0.00</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Envío</span>
+                <span class="summary-value" id="shipping">$0.00</span>
+            </div>
+
+            <div class="summary-row discount" id="discountRow" style="display: none;">
+                <span class="summary-label">Descuento</span>
+                <span class="summary-value" id="discount">-$0.00</span>
+            </div>
+
+            <div class="promo-section">
+                <div class="promo-title">¿Tienes un código promocional?</div>
+                <div class="promo-input-group">
+                    <input type="text" class="promo-input" id="promoCode" placeholder="Ingresa el código">
+                    <button class="promo-button" onclick="applyPromoCode()">Aplicar</button>
+                </div>
+            </div>
+
+            <div class="summary-row total">
+                <span class="summary-label">Total</span>
+                <span class="summary-value" id="total">$0.00</span>
+            </div>
+
+            <button class="checkout-button" onclick="proceedToCheckout()">
+                Proceder al pago
+            </button>
+
+            <div class="security-notice">
+                🔒 Pago seguro y encriptado
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/carrito.js"></script>
+</body>
+</html>
