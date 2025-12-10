@@ -1,4 +1,4 @@
-﻿const API_URL = "http://localhost:5080/api/productos";
+﻿const API_URL = "http://localhost:5000/api/productos";
 
 // Función para generar estrellas (ejemplo simple)
 function generarEstrellas(rating) {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uldvDH4cI8g=",
+  "dgSpecHash": "OsrMInMn/F4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\abdel\\source\\repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
+  "projectFilePath": "C:\\Users\\abdel\\Source\\Repos\\Mercado1\\Mercado1.Api\\Mercado1.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdel\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\abdel\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

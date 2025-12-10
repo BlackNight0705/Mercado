@@ -1,4 +1,4 @@
-﻿const API_BASE = "http://localhost:5080/api/pedidos";
+﻿const API_BASE = "http://localhost:5000/api/pedidos";
 let ordersData = [];
 
 // Cargar pedidos al iniciar

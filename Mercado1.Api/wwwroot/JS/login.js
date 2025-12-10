@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5080/api/auth";
+const API_BASE = "http://localhost:5000/api/auth";
 
 // Cambiar entre tabs
 function switchTab(tab) {
