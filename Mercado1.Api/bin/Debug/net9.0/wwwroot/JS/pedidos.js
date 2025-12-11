@@ -1,12 +1,10 @@
 ﻿const API_BASE = "http://localhost:5000/api/pedidos";
 let ordersData = [];
 
-// Cargar pedidos al iniciar
 window.addEventListener('DOMContentLoaded', () => {
     loadOrders();
 });
 
-// Cargar pedidos desde API
 async function loadOrders() {
     try {
         const response = await fetch(API_BASE, {
@@ -16,21 +14,35 @@ async function loadOrders() {
         });
 
         if (response.ok) {
-            ordersData = await response.json();
+            const result = await response.json();
+
+            // Si viene con $values, extraerlos
+            if (result.$values) {
+                ordersData = result.$values.map(order => ({
+                    orderNumber: order.orderNumber,
+                    date: order.date,
+                    status: order.status,
+                    total: order.total,
+                    items: order.items?.$values || [] // 👈 extraer items
+                }));
+            } else {
+                ordersData = Array.isArray(result) ? result : [];
+            }
         }
+
 
         renderOrders();
     } catch (error) {
         console.error('Error cargando pedidos:', error);
+        ordersData = [];
         renderOrders();
     }
 }
 
-// Renderizar pedidos
 function renderOrders() {
     const ordersList = document.getElementById('ordersList');
 
-    if (ordersData.length === 0) {
+    if (!Array.isArray(ordersData) || ordersData.length === 0) {
         ordersList.innerHTML = `
             <div class="empty-orders">
                 <h3>📦 No tienes pedidos</h3>
@@ -60,27 +72,26 @@ function renderOrders() {
             </div>
 
             <div class="order-items">
-                ${order.items.map(item => `
+                ${Array.isArray(order.items) ? order.items.map(item => `
                     <div class="order-item">
-                        <img src="${item.image}" alt="${item.name}" class="item-image">
+                        <img src="${item.image || 'placeholder.jpg'}" alt="${item.name}" class="item-image">
                         <div class="item-details">
                             <h3 onclick="goToProduct('${item.id}')">${item.name}</h3>
                             <div class="item-quantity">Cantidad: ${item.quantity}</div>
                         </div>
                         <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
                     </div>
-                `).join('')}
+                `).join('') : ''}
             </div>
 
             <div class="order-total">
                 <span class="total-label">Total del pedido:</span>
-                <span class="total-amount">$${order.total.toFixed(2)}</span>
+                <span class="total-amount">$${(order.total || 0).toFixed(2)}</span>
             </div>
         </div>
     `).join('');
 }
 
-// Formatear fecha
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -90,7 +101,6 @@ function formatDate(dateString) {
     });
 }
 
-// Ir a página de producto
 function goToProduct(productId) {
     window.location.href = `producto.html?id=${productId}`;
 }

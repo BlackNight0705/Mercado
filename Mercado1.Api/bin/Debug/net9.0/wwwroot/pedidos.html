@@ -7,25 +7,28 @@
     <link rel="stylesheet" href="css/pedido-diseno.css">
 </head>
 <body>
-        <!-- Mini Header -->
-        <div class="mini-header">
-            <div class="logo" onclick="window.location.href='index.html'"><img src="img/logo.png" alt="Logo El Mercado"></div>
-            <a href="index.html" class="back-link">← Volver a la tienda</a>
+    <!-- Mini Header -->
+    <div class="mini-header">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="img/logo.png" alt="Logo El Mercado">
+        </div>
+        <a href="index.html" class="back-link">← Volver a la tienda</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="orders-container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Mis Pedidos</h1>
         </div>
 
-        <!-- Container Principal -->
-        <div class="orders-container">
-            <!-- Header -->
-            <div class="page-header">
-                <h1 class="page-title">Mis Pedidos</h1>
-            </div>
-
-            <!-- Lista de Pedidos -->
-            <div class="orders-list" id="ordersList">
-                <!-- Los pedidos se cargarán aquí con JavaScript -->
-            </div>
+        <!-- Lista de Pedidos -->
+        <div class="orders-list" id="ordersList">
+            <!-- Los pedidos se cargarán aquí con JavaScript -->
         </div>
+    </div>
 
-        <script src="JS/pedidos.js"></script>
-    </body>
+    <!-- Script de pedidos -->
+    <script src="JS/pedidos.js"></script>
+</body>
 </html>

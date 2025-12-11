@@ -4,3 +4,85 @@ GET {{Mercado1.Api_HostAddress}}/api/productos
 Accept: application/json
 
 ###
+
+GET {{Mercado1.Api_HostAddress}}/api/productos/2
+Accept: application/json
+
+###
+
+POST {{Mercado1.Api_HostAddress}}/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "correo": "JuanPers@gmail.com",
+  "password": "dkQWNQRkc48kuhy"
+}
+###
+
+POST {{Mercado1.Api_HostAddress}}/api/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "nombre":"Pepe",
+    "correo":"pepe@gmail.com",
+    "password": "pepe1234"
+}
+###
+
+POST {{Mercado1.Api_HostAddress}}/api/carrito/add/2
+Accept: application/json
+Content-Type: application/json
+
+{
+  "productoId": 4,
+  "cantidad": 1
+}
+###
+
+GET {{Mercado1.Api_HostAddress}}/api/carrito/2
+Accept: application/json
+
+###
+
+DELETE {{Mercado1.Api_HostAddress}}/api/carrito/remove/1/1
+Accept: application/json
+
+###
+
+DELETE {{Mercado1.Api_HostAddress}}/api/carrito/clear/2
+Accept: application/json
+
+###
+
+GET {{Mercado1.Api_HostAddress}}/api/pedidos
+Accept: application/json
+###
+
+GET {{Mercado1.Api_HostAddress}}/api/pedidos/1
+Accept: application/json
+###
+
+GET {{Mercado1.Api_HostAddress}}/api/pedidos/usuario/2
+Accept: application/json
+###
+
+POST {{Mercado1.Api_HostAddress}}/api/pedidos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Fecha_PE": "2025-12-11T00:00:00",
+  "DireccionEnvio_PE": "Calle 123, Ciudad",
+  "Id_U": 2,
+  "Id_E": 1,
+  "DetallesPedidos": [
+    {
+      "Id_P": 2,
+      "Cantidad_DP": 2,
+      "PrecioUnitario": 299.99
+    }
+  ]
+}
+####

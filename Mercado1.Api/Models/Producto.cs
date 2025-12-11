@@ -1,3 +1,6 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Mercado1.Api.Models
 {
     public class Producto
@@ -10,11 +13,14 @@ namespace Mercado1.Api.Models
         public int Stock_P { get; set; }
         public string? ImagenUrl_P { get; set; }
 
+        [ForeignKey("Categoria")]
         public int? Id_C { get; set; }
         public Categoria? Categoria { get; set; }
 
         public ICollection<Promocion> Promociones { get; set; } = new List<Promocion>();
-        public ICollection<DetallePedido> DetallesPedido { get; set; } = new List<DetallePedido>();
+        public ICollection<DetallePedido> DetallesPedidos { get; set; } = new List<DetallePedido>();
         public ICollection<Resena> Resenas { get; set; } = new List<Resena>();
+        public ICollection<CarritoItem> CarritoItems { get; set; } = new List<CarritoItem>();
+
     }
 }

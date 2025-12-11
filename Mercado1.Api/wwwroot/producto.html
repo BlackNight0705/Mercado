@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto - Tu E-commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amazon Ember', Arial, sans-serif;
+            background-color: #eaeded;
+        }
+
+        /* Mini Header */
+        .mini-header {
+            background-color: #131921;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff9900;
+            cursor: pointer;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .back-link:hover {
+                color: #ff9900;
+            }
+
+        /* Container Principal */
+        .product-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .product-content {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 500px 1fr;
+            gap: 40px;
+        }
+
+        /* Sección de Imágenes */
+        .images-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-image-container {
+            width: 100%;
+            height: 500px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            object-fit: contain;
+            padding: 5px;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+            .thumbnail:hover,
+            .thumbnail.active {
+                border-color: #ff9900;
+            }
+
+        /* Sección de Detalles */
+        .details-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #0F1111;
+            line-height: 1.3;
+        }
+
+        .product-brand {
+            color: #0066c0;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+            .product-brand:hover {
+                color: #c45500;
+                text-decoration: underline;
+            }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stars {
+            color: #ff9900;
+            font-size: 18px;
+        }
+
+        .rating-count {
+            color: #0066c0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+            .rating-count:hover {
+                color: #c45500;
+                text-decoration: underline;
+            }
+
+        .price-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #565959;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 32px;
+            font-weight: 400;
+            color: #B12704;
+        }
+
+        .price-currency {
+            font-size: 20px;
+            vertical-align: super;
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #565959;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background-color: #cc0c39;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        .stock-section {
+            padding: 15px 0;
+        }
+
+        .in-stock {
+            color: #007600;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .out-stock {
+            color: #B12704;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #0F1111;
+            padding: 15px 0;
+        }
+
+        .features-section {
+            padding: 20px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .features-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #0F1111;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .features-list li {
+                padding: 8px 0;
+                font-size: 14px;
+                color: #0F1111;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+                .features-list li:before {
+                    content: "✓ ";
+                    color: #007600;
+                    font-weight: bold;
+                    margin-right: 10px;
+                }
+
+        .purchase-section {
+            background: #f0f2f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+
+            .quantity-btn:hover {
+                background: #f0f0f0;
+            }
+
+        .quantity-input {
+            border: none;
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            background: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #ff9900;
+            color: #0F1111;
+        }
+
+            .btn-primary:hover {
+                background-color: #f3a847;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+        .btn-secondary {
+            background-color: #ffa41c;
+            color: #0F1111;
+        }
+
+            .btn-secondary:hover {
+                background-color: #fa8900;
+            }
+
+        .btn:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .specifications-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .specs-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0F1111;
+        }
+
+        .specs-table {
+            width: 100%;
+        }
+
+        .specs-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #565959;
+        }
+
+        .spec-value {
+            color: #0F1111;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff9900;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+
+            .images-section {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-image-container {
+                height: 350px;
+            }
+
+            .product-title {
+                font-size: 22px;
+            }
+
+            .product-price {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mini Header -->
+    <div class="mini-header">
+        <div class="logo" onclick="window.location.href='index.html'">🛒 Tu E-commerce</div>
+        <a href="index.html" class="back-link">← Volver a la tienda</a>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="product-container">
+        <div id="productContent">
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Cargando producto...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/producto.js"></script>
+</body>
+</html>
