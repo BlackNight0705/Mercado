@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api/auth";
+锘縞onst API_BASE = "http://localhost:5000/api/auth";
 
 // Cambiar entre tabs
 function switchTab(tab) {
@@ -25,7 +25,7 @@ function togglePassword(inputId) {
     input.type = input.type === 'password' ? 'text' : 'password';
 }
 
-// Mostrar mensaje de 閤ito
+// Mostrar mensaje de 茅xito
 function showSuccess(message) {
     const successMsg = document.getElementById('successMessage');
     successMsg.textContent = message;
@@ -62,26 +62,28 @@ async function handleLogin(event) {
     event.preventDefault();
     clearErrors('loginForm');
 
-    const email = document.getElementById('loginEmail').value;
+    const correo = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const remember = document.getElementById('rememberMe').checked;
     const button = document.getElementById('loginButton');
 
     button.disabled = true;
-    button.textContent = 'Iniciando sesi髇...';
+    button.textContent = 'Iniciando sesi贸n...';
 
     try {
         const response = await fetch(`${API_BASE}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, remember })
+            body: JSON.stringify({ correo, password})
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            showSuccess('nicio de sesi髇 exitoso!');
-            localStorage.setItem('authToken', data.token);
+            showSuccess('隆Inicio de sesi贸n exitoso!');
+            localStorage.setItem('authToken', data.token); // si tu backend devuelve token
+            localStorage.setItem('userName', data.usuario.nombre_U); // 馃憟 usar nombre_U
+            localStorage.setItem('userId', data.usuario.id_U);       // 馃憟 usar id_U
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 1500);
@@ -90,10 +92,10 @@ async function handleLogin(event) {
         }
     } catch (error) {
         console.error('Error:', error);
-        showError('loginEmail', 'Error de conexi髇. Intenta de nuevo.');
+        showError('loginEmail', 'Error de conexi贸n. Intenta de nuevo.');
     } finally {
         button.disabled = false;
-        button.textContent = 'Iniciar Sesi髇';
+        button.textContent = 'Iniciar Sesi贸n';
     }
 }
 
@@ -102,15 +104,14 @@ async function handleRegister(event) {
     event.preventDefault();
     clearErrors('registerForm');
 
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const phone = document.getElementById('registerPhone').value;
+    const nombre = document.getElementById('registerName').value;
+    const correo = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     const button = document.getElementById('registerButton');
 
     if (password !== confirmPassword) {
-        showError('registerConfirmPassword', 'Las contrase馻s no coinciden');
+        showError('registerConfirmPassword', 'Las contrase帽as no coinciden');
         return;
     }
 
@@ -121,23 +122,28 @@ async function handleRegister(event) {
         const response = await fetch(`${API_BASE}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, password })
+            body: JSON.stringify({ nombre, correo, password })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            showSuccess('uenta creada exitosamente!');
+            showSuccess('隆Cuenta creada exitosamente!');
+
+            // Guardar datos en localStorage
+            localStorage.setItem('authToken', data.token || ""); // si el backend devuelve token
+            localStorage.setItem('userName', data.usuario.nombre_U); // 馃憟 usar nombre_U
+            localStorage.setItem('userId', data.usuario.id_U);       // 馃憟 usar id_U
+
             setTimeout(() => {
-                switchTab('login');
-                document.getElementById('loginEmail').value = email;
-            }, 2000);
+                window.location.href = 'index.html';
+            }, 1500);
         } else {
             showError('registerEmail', data.message || 'Error al crear cuenta');
         }
     } catch (error) {
         console.error('Error:', error);
-        showError('registerEmail', 'Error de conexi髇. Intenta de nuevo.');
+        showError('registerEmail', 'Error de conexi贸n. Intenta de nuevo.');
     } finally {
         button.disabled = false;
         button.textContent = 'Crear Cuenta';

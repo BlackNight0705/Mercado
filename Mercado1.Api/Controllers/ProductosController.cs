@@ -24,8 +24,8 @@ namespace Mercado1.Api.Controllers
                     imagen = p.ImagenUrl_P ?? "imagenes/placeholder.jpg",
                     descripcion = p.Descripcion_P ?? "Sin descripción disponible.",
                     caracteristicas = new List<string> {
-                $"Stock: {p.Stock_P}",
-                $"Categoría: {p.Categoria.Nombre_C}"
+                        $"Stock: {p.Stock_P}",
+                        $"Categoría: {(p.Categoria != null ? p.Categoria.Nombre_C : "Sin categoría")}" // 👈 corregido
                     },
                     rating = 4,
                     reviews = 10,
@@ -42,16 +42,15 @@ namespace Mercado1.Api.Controllers
         {
             var producto = await _db.Productos
                 .Include(p => p.Categoria)
-                .Select(p => new
-                {
+                .Select(p => new {
                     id = p.Id_P,
                     nombre = p.Nombre_P,
                     precio = p.Precio_P,
-                    imagen = p.ImagenUrl_P,
-                    descripcion = p.Descripcion_P,
+                    imagen = p.ImagenUrl_P ?? "imagenes/placeholder.jpg",
+                    descripcion = p.Descripcion_P ?? "Sin descripción disponible.",
                     caracteristicas = new List<string> {
-                "Stock: " + p.Stock_P,
-                "Categoría: " + p.Categoria.Nombre_C
+                        $"Stock: {p.Stock_P}",
+                        $"Categoría: {(p.Categoria != null ? p.Categoria.Nombre_C : "Sin categoría")}" // 👈 corregido
                     },
                     rating = 4,
                     reviews = 10,
